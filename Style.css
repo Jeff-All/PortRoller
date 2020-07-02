@@ -6,6 +6,10 @@
     border-bottom: 3px solid black !important;
 }
 
+#ExchangeTable > tbody > tr > td {
+    border: 1px solid grey;
+}
+
 .header > td{
     Margin: auto;
     width: 50%;
@@ -20,6 +24,26 @@
 }
 
 .sell {
-    background-color: #ffcccc;
+    background-color: #fdefef;
     border: 2px solid red !important;
+}
+
+.platinum {
+    color: Black
+}
+
+.gold {
+    color: gold
+}
+
+.silver {
+    color: rgb(117, 117, 117)
+}
+
+.copper {
+    color: #B87333
+}
+
+.currency * {
+    font-weight: bolder;
 }

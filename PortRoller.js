@@ -42,24 +42,16 @@ function BuildButtonTable(sources) {
 function BuildExchangeTable(source) {
     $("#ExchangeTable tr").remove();
     var table = document.getElementById("ExchangeTable");
+    var exchange = CalculateExchange(source);
+    Object.keys(exchange).sort().forEach(key =>{
+        var curRow = table.insertRow(-1);
+        FillExchangeTableRow(curRow, exchange[key])
+    });
     BuildExchangeTableHeaders(table);
 }
 
 function BuildExchangeTableHeaders(table) {
-    var row1 = table.insertRow(0);
-    row1.className = "header";
-    var cell1 = row1.insertCell(0);
-    cell1.innerHTML = "Buy";
-    cell1.colSpan = 3;
-    cell1.className = "buy";
-    var cell2 = row1.insertCell(1);
-    var cell2 = row1.insertCell(2);
-    var cell2 = row1.insertCell(3);
-    cell2.innerHTML = "Sell";
-    cell2.colSpan = 3;
-    cell2.className = "sell";
-
-    var row2 = table.insertRow(1);
+    var row2 = table.insertRow(0);
     row2.className = "header headerBorder";
     var cell1_2 = row2.insertCell(0);
     cell1_2.innerHTML = "Ton";
@@ -74,7 +66,7 @@ function BuildExchangeTableHeaders(table) {
     var cell4_2 = row2.insertCell(3);
     cell4_2.innerHTML = "Item";
     var cell4_2 = row2.insertCell(4);
-    cell4_2.innerHTML = "Amount";
+    cell4_2.innerHTML = "Amount(Tons)";
 
     var cell5_2 = row2.insertCell(5);
     cell5_2.innerHTML = "Ton";
@@ -85,17 +77,70 @@ function BuildExchangeTableHeaders(table) {
     var cell7_2 = row2.insertCell(7);
     cell7_2.innerHTML = "Ounce";
     cell7_2.className = "sell";
+
+    var row1 = table.insertRow(0);
+    row1.className = "header";
+    var cell1 = row1.insertCell(0);
+    cell1.innerHTML = "Buy";
+    cell1.colSpan = 3;
+    cell1.className = "buy";
+    var cell2 = row1.insertCell(1);
+    var cell2 = row1.insertCell(2);
+    var cell2 = row1.insertCell(3);
+    cell2.innerHTML = "Sell";
+    cell2.colSpan = 3;
+    cell2.className = "sell";
+}
+
+function FillExchangeTableRow(row, entry) {
+    var BuyTon = row.insertCell(0);
+    var BuyPound = row.insertCell(1);
+    var BuyOunce = row.insertCell(2);
+
+    var Item = row.insertCell(3);
+    var Amount = row.insertCell(4);
+
+    var SellTon = row.insertCell(5);
+    var SellPound = row.insertCell(6);
+    var SellOunce = row.insertCell(7);
+
+    BuyTon.className = "buy";
+    BuyPound.className = "buy";
+    BuyOunce.className = "buy";
+
+    SellTon.className = "sell";
+    SellPound.className = "sell";
+    SellOunce.className = "sell";
+
+    Item.innerHTML = entry.Item;
+    Amount.innerHTML = entry.Amount;
+
+    BuyTon.innerHTML = BuildDNDCurrencyDiv(entry.Buy);
+    BuyPound.innerHTML = BuildDNDCurrencyDiv(entry.Buy/2000);
+    BuyOunce.innerHTML = BuildDNDCurrencyDiv(entry.Buy/32000);
+
+    SellTon.innerHTML = BuildDNDCurrencyDiv(entry.Sell);
+    SellPound.innerHTML = BuildDNDCurrencyDiv(entry.Sell/2000);
+    SellOunce.innerHTML = BuildDNDCurrencyDiv(entry.Sell/32000);
 }
 
 function CalculateExchange(source) {
-    var Exchange;
+    var exchange={};
     SourceMap[source].forEach(entry => {
-        var cur;
-        if(!CheckIfAvailable(source,entry)) { return }
-        cur.Amount = CalculateAmount(entry);
-        cur.Buy = CalculateBuy(entry);
-        cur.Sell = CalculateSell(entry, cur.Buy);
+        var cur = {};
+        if(!CheckIfAvailable(source,entry.value)) { return }
+        cur.Item = entry.key;
+        cur.Amount = CalculateAmount(entry.value);
+        cur.Buy = CalculateBuy(entry.value);
+        cur.Sell = CalculateSell(entry.value, cur.Buy);
+        exchange[entry.key] = cur
+        console.log(`CalculateExchange(${entry.key}):`
+            + `Amount=${cur.Amount},`
+            + `Buy=${cur.Buy},`
+            + `Sell=${cur.Sell}`
+        );
     });
+    return exchange;
 }
 
 function CheckIfAvailable(source, entry) {
@@ -116,7 +161,7 @@ function CalculateAmount(entry) {
 
 function CalculateBuy(entry) {
     var range = entry.BuyRange.Max - entry.BuyRange.Min;
-    return (Math.random() * range) + entry.BuyRange.Min;
+    return entry.BasePrice * ((Math.random() * range) + entry.BuyRange.Min);
 }
 
 function CalculateSell(entry, buy) {
@@ -165,4 +210,20 @@ function RollDice(string) {
 
 function RollDie(sides) {
     return Math.floor(Math.random() * sides + 1);
+}
+
+function BuildDNDCurrencyDiv(cp) {
+    var pp = Math.floor(cp/1000);
+    cp = cp % 1000;
+    var gp = Math.floor(cp/100);
+    cp = cp % 100;
+    var sp = Math.floor(cp/10);
+    cp = Math.round(cp % 10);
+
+    return `<div class="currency">`
+        + `<span class="platinum">${pp}</span>.`
+        + `<span class="gold">${gp}</span>.`
+        + `<span class="silver">${sp}</span>.`
+        + `<span class="copper">${cp}</span>`
+        + `</div>`
 }
