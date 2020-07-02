@@ -91,7 +91,8 @@ function CalculateExchange(source) {
     var Exchange;
     SourceMap[source].forEach(entry => {
         var cur;
-        if(!CheckIfAvailable(source,entry)) { return } 
+        if(!CheckIfAvailable(source,entry)) { return }
+        cur.Amount = CalculateAmount(entry);
     });
 }
 
@@ -105,6 +106,10 @@ function CheckIfAvailable(source, entry) {
         rate = entry.Availability.ElseWhere
     }
     return Math.random() < rate;
+}
+
+function CalculateAmount(entry) {
+    return RollDice(entry.Amount.Roll) * (entry.Amount.Percentage == null ? 1 : entry.Amount.Percentage);
 }
 
 // Handlers
@@ -132,4 +137,19 @@ function ProcessEntry(key, entry) {
 // Helper Functions
 function capitalizeFirstLetter(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
+}
+
+function RollDice(string) {
+    var split = string.split("d");
+    var count = parseInt(split[0]);
+    var sides = parseInt(split[1]);
+    var total = 0;
+    for(i=0;i<count;i++) {
+        total += RollDie(sides);
+    }
+    return total;
+}
+
+function RollDie(sides) {
+    return Math.floor(Math.random() * sides + 1);
 }
