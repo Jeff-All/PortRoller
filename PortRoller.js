@@ -1,11 +1,21 @@
 
 var Sources=["Trade Hub"];
+var SourceMap ={"Trade Hub":[]}
 
 for (const [key, value] of Object.entries(PortData)) {
     ProcessEntry(key, value)
 }
 
 console.log(`Sources:${Sources}`);
+var toPrint = "";
+for (const [key, value] of Object.entries(SourceMap)) {
+    toPrint += `[${key}=`;
+    value.forEach(entry => {
+        toPrint += `${entry.key},`
+    });
+    toPrint += "]"
+}
+console.log(`SourceMap:${toPrint}`);
 
 $(document).ready(function(){
     ButtonTable = $('#ButtonTable');
@@ -83,14 +93,16 @@ function HandleButtonClick(key) {
 // Entry Processing
 function ProcessEntry(key, entry) {
     console.log(`ProcessEntry(${key}):${entry.Sources}`);
-    AddSources(entry.Sources);
-}
-
-function AddSources(sources) {
-    sources.forEach(source => {
+    var pair = {"key":key, value:entry};
+    SourceMap["Trade Hub"].push(pair)
+    entry.Sources.forEach(source => {
         if(!Sources.includes(source)){
             Sources.push(source);
         }
+        if(!(source in SourceMap)) {
+            SourceMap[source] = []
+        }
+        SourceMap[source].push(pair);
     });
 }
 
