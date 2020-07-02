@@ -94,6 +94,7 @@ function CalculateExchange(source) {
         if(!CheckIfAvailable(source,entry)) { return }
         cur.Amount = CalculateAmount(entry);
         cur.Buy = CalculateBuy(entry);
+        cur.Sell = CalculateSell(entry, cur.Buy);
     });
 }
 
@@ -116,6 +117,11 @@ function CalculateAmount(entry) {
 function CalculateBuy(entry) {
     var range = entry.BuyRange.Max - entry.BuyRange.Min;
     return (Math.random() * range) + entry.BuyRange.Min;
+}
+
+function CalculateSell(entry, buy) {
+    var range = entry.SellRange.Max - entry.SellRange.Min;
+    return buy - (buy *(Math.random() * range));
 }
 
 // Handlers
