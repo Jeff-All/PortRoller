@@ -1,6 +1,4 @@
 
-var ButtonTable;
-var ExchangeTable;
 var Sources=["Trade Hub"];
 
 for (const [key, value] of Object.entries(PortData)) {
@@ -31,9 +29,19 @@ function BuildButtonTable(sources) {
     });
 }
 
+function BuildExchangeTable(source) {
+    $("#ExchangeTable tr").remove();
+    var table = document.getElementById("ExchangeTable");
+    BuildExchangeTableHeaders(table);
+}
+
+function BuildExchangeTableHeaders(table) {
+}
+
 // Handlers
 function HandleButtonClick(key) {
     console.log(`HandleButtonClick:key=${key}`);
+    BuildExchangeTable(key);
 }
 
 // Entry Processing

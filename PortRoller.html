@@ -3,12 +3,45 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="./TableConfig.js"></script>
     <script src="./PortData.js"></script>
+    <link rel="stylesheet" type="text/css" href="Style.css">
 </head>
 <html>
     <body>
         <table id="ButtonTable">
         </table>
         <table id="ExchangeTable">
+            <tr class="header">
+                <td class="buy" colspan="3">Buy</td>
+                <td></td>
+                <td class="sell" colspan=3>Sell</td>
+            </tr>
+            <tr class="header headerBorder">
+                <td class="buy">Ton</td>
+                <td class="buy">Pound</td>
+                <td class="buy">Ounce</td>
+                <td>Item</td>
+                <td class="sell">Ton</td>
+                <td class="sell">Pound</td>
+                <td class="sell">Ounce</td>
+            </tr>
+            <tr class="data" id="row1">
+                <td class="buy">1G</td>
+                <td class="buy">1G</td>
+                <td class="buy">1G</td>
+                <td>Wheat</td>
+                <td class="sell">1G</td>
+                <td class="sell">1G</td>
+                <td class="sell">1G</td>
+            </tr>
+            <tr class="data" id="row2">
+                <td class="buy">1G</td>
+                <td class="buy">1G</td>
+                <td class="buy">1G</td>
+                <td>Wheat</td>
+                <td class="sell">1G</td>
+                <td class="sell">1G</td>
+                <td class="sell">1G</td>
+            </tr>
         </table>
     </body>
     <script src="./PortRoller.js"></script>

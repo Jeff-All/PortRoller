@@ -1,0 +1,25 @@
+#ExchangeTable {
+    border-collapse: collapse;
+}
+
+.headerBorder > td {
+    border-bottom: 3px solid black !important;
+}
+
+.header > td{
+    Margin: auto;
+    width: 50%;
+    padding: 10px;
+    text-align: center;
+    border: 1px solid grey;
+}
+
+.buy {
+    background-color: #ccffcc;
+    border: 2px solid green !important;
+}
+
+.sell {
+    background-color: #ffcccc;
+    border: 2px solid red !important;
+}
