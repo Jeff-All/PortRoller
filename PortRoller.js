@@ -54,6 +54,7 @@ function BuildExchangeTableHeaders(table) {
     cell1.className = "buy";
     var cell2 = row1.insertCell(1);
     var cell2 = row1.insertCell(2);
+    var cell2 = row1.insertCell(3);
     cell2.innerHTML = "Sell";
     cell2.colSpan = 3;
     cell2.className = "sell";
@@ -72,16 +73,38 @@ function BuildExchangeTableHeaders(table) {
 
     var cell4_2 = row2.insertCell(3);
     cell4_2.innerHTML = "Item";
+    var cell4_2 = row2.insertCell(4);
+    cell4_2.innerHTML = "Amount";
 
-    var cell5_2 = row2.insertCell(4);
+    var cell5_2 = row2.insertCell(5);
     cell5_2.innerHTML = "Ton";
     cell5_2.className = "sell";
-    var cell6_2 = row2.insertCell(5);
+    var cell6_2 = row2.insertCell(6);
     cell6_2.innerHTML = "Pound";
     cell6_2.className = "sell";
-    var cell7_2 = row2.insertCell(6);
+    var cell7_2 = row2.insertCell(7);
     cell7_2.innerHTML = "Ounce";
     cell7_2.className = "sell";
+}
+
+function CalculateExchange(source) {
+    var Exchange;
+    SourceMap[source].forEach(entry => {
+        var cur;
+        if(!CheckIfAvailable(source,entry)) { return } 
+    });
+}
+
+function CheckIfAvailable(source, entry) {
+    var rate;
+    if(source == "Trade Hub") { 
+        rate = entry.Availability.Hub
+    } else if(entry.Sources.includes(source)) {
+        rate = entry.Availability.Source
+    } else {
+        rate = entry.Availability.ElseWhere
+    }
+    return Math.random() < rate;
 }
 
 // Handlers
