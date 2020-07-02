@@ -1,8 +1,9 @@
 {
     "Wheat":{
+        "Increment":"Tons",
         "Availability":["Agricultural"],
         "Percentages":{"Source":"95","Hub":"50","ElseWhere":"10"},
-        "Amount":{"Roll":"5d6","Increment":"Tons"},
+        "Amount":{"Roll":"5d6"},
         "BasePrice":"4g",
         "BuyRange":{"Min":"0.5","Max":"1.15"},
         "SellingRange":{"Min":"0.05","Max":"0.1"}
