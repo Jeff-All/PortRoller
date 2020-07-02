@@ -93,6 +93,7 @@ function CalculateExchange(source) {
         var cur;
         if(!CheckIfAvailable(source,entry)) { return }
         cur.Amount = CalculateAmount(entry);
+        cur.Buy = CalculateBuy(entry);
     });
 }
 
@@ -112,11 +113,17 @@ function CalculateAmount(entry) {
     return RollDice(entry.Amount.Roll) * (entry.Amount.Percentage == null ? 1 : entry.Amount.Percentage);
 }
 
+function CalculateBuy(entry) {
+    var range = entry.BuyRange.Max - entry.BuyRange.Min;
+    return (Math.random() * range) + entry.BuyRange.Min;
+}
+
 // Handlers
 function HandleButtonClick(key) {
     console.log(`HandleButtonClick:key=${key}`);
     BuildExchangeTable(key);
 }
+
 
 // Entry Processing
 function ProcessEntry(key, entry) {
