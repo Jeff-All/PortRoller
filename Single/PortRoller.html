@@ -16,10 +16,15 @@
 
         .header > td{
             Margin: auto;
-            width: 50%;
             padding: 10px;
             text-align: center;
             border: 1px solid grey;
+        }
+
+        .buffer {
+            max-width: 0px;
+            width: 0px;
+            padding: 0px !important;
         }
 
         .buy {
@@ -139,56 +144,72 @@
         function BuildExchangeTableHeaders(table) {
             var row2 = table.insertRow(0);
             row2.className = "header headerBorder";
-            var cell1_2 = row2.insertCell(0);
+
+            var item = row2.insertCell(0);
+            item.innerHTML = "Item";
+            item.className = "item";
+            var amount = row2.insertCell(1);
+            amount.innerHTML = "Amount(Tons)";
+            amount.className = "amount";
+
+            var cell1_2 = row2.insertCell(2);
             cell1_2.innerHTML = "Ton";
             cell1_2.className = "buy";
-            var cell2_2 = row2.insertCell(1);
+            var cell2_2 = row2.insertCell(3);
             cell2_2.innerHTML = "Pound";
             cell2_2.className = "buy";
-            var cell3_2 = row2.insertCell(2);
+            var cell3_2 = row2.insertCell(4);
             cell3_2.innerHTML = "Ounce";
             cell3_2.className = "buy";
 
-            var cell4_2 = row2.insertCell(3);
-            cell4_2.innerHTML = "Item";
-            var cell4_2 = row2.insertCell(4);
-            cell4_2.innerHTML = "Amount(Tons)";
+            var buffer = row2.insertCell(5);
+            buffer.className = "buffer";
 
-            var cell5_2 = row2.insertCell(5);
+            var cell5_2 = row2.insertCell(6);
             cell5_2.innerHTML = "Ton";
             cell5_2.className = "sell";
-            var cell6_2 = row2.insertCell(6);
+            var cell6_2 = row2.insertCell(7);
             cell6_2.innerHTML = "Pound";
             cell6_2.className = "sell";
-            var cell7_2 = row2.insertCell(7);
+            var cell7_2 = row2.insertCell(8);
             cell7_2.innerHTML = "Ounce";
             cell7_2.className = "sell";
 
+            
             var row1 = table.insertRow(0);
             row1.className = "header";
-            var cell1 = row1.insertCell(0);
-            cell1.innerHTML = "Buy";
-            cell1.colSpan = 3;
-            cell1.className = "buy";
-            var cell2 = row1.insertCell(1);
-            var cell2 = row1.insertCell(2);
-            var cell2 = row1.insertCell(3);
-            cell2.innerHTML = "Sell";
-            cell2.colSpan = 3;
-            cell2.className = "sell";
+
+            row1.insertCell(0);
+            row1.insertCell(1);
+
+            var buy = row1.insertCell(2);
+            buy.innerHTML = "Buy";
+            buy.colSpan = 3;
+            buy.className = "buy";
+            
+            var buffer2 = row1.insertCell(3);
+            buffer2.className = "buffer";
+
+            var sell = row1.insertCell(4);
+            sell.innerHTML = "Sell";
+            sell.colSpan = 3;
+            sell.className = "sell";
         }
 
         function FillExchangeTableRow(row, entry) {
-            var BuyTon = row.insertCell(0);
-            var BuyPound = row.insertCell(1);
-            var BuyOunce = row.insertCell(2);
+            var Item = row.insertCell(0);
+            var Amount = row.insertCell(1);
 
-            var Item = row.insertCell(3);
-            var Amount = row.insertCell(4);
+            var BuyTon = row.insertCell(2);
+            var BuyPound = row.insertCell(3);
+            var BuyOunce = row.insertCell(4);
 
-            var SellTon = row.insertCell(5);
-            var SellPound = row.insertCell(6);
-            var SellOunce = row.insertCell(7);
+            var  buffer = row.insertCell(5);
+            buffer.className = "buffer";
+
+            var SellTon = row.insertCell(6);
+            var SellPound = row.insertCell(7);
+            var SellOunce = row.insertCell(8);
 
             BuyTon.className = "buy";
             BuyPound.className = "buy";
