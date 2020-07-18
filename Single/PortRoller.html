@@ -76,13 +76,258 @@
                 BuyRange:{Min:0.5,Max:1.15},
                 SellRange:{Min:0.05,Max:0.1}
             },
+            Flour:{
+                Sources:["Agricultural","Minor Industry"],
+                Availability:{Source:0.80,Hub:0.5,ElseWhere:0.5},
+                Amount:{Roll:"2d6"},
+                BasePrice:1000,
+                BuyRange:{Min:0.5,Max:1.30},
+                SellRange:{Min:0.05,Max:0.1}
+            },
+            Chickens:{
+                Sources:["Agricultural"],
+                Availability:{Source:0.65,Hub:0.35,ElseWhere:0.025},
+                Amount:{Roll:"1d6"},
+                BasePrice:1000,
+                BuyRange:{Min:0.5,Max:1.75},
+                SellRange:{Min:0.05,Max:0.25}
+            },
+            Salt:{
+                Sources:["Mining"],
+                Availability:{Source:0.6,Hub:0.6,ElseWhere:0.05},
+                Amount:{Roll:"1d4"},
+                BasePrice:2000,
+                BuyRange:{Min:0.5,Max:1.30},
+                SellRange:{Min:0.05,Max:0.1}
+            },
+            Iron:{
+                Sources:["Mining","Minor Industry","Mountain"],
+                Availability:{Source:0.95,Hub:0.5,ElseWhere:0.05},
+                Amount:{Roll:"1d4"},
+                BasePrice:4000,
+                BuyRange:{Min:0.5,Max:1.50},
+                SellRange:{Min:0.05,Max:0.1}
+            },
+            Canvas:{
+                Sources:["Minor Industry"],
+                Availability:{Source:0.95,Hub:0.5,ElseWhere:0.01},
+                Amount:{Roll:"1d4"},
+                BasePrice:4000,
+                BuyRange:{Min:0.5,Max:1.25},
+                SellRange:{Min:0.05,Max:0.1}
+            },
+            Copper:{
+                Sources:["Mining","Minor Industry","Desert"],
+                Availability:{Source:0.8,Hub:0.5,ElseWhere:0.05},
+                Amount:{Roll:"1d3"},
+                BasePrice:200000,
+                BuyRange:{Min:0.5,Max:1.25},
+                SellRange:{Min:0.05,Max:0.1}
+            },
+            Wood:{
+                Sources:["Forest"],
+                Availability:{Source:0.95,Hub:0.5,ElseWhere:0.05},
+                Amount:{Roll:"1d3"},
+                BasePrice:200000,
+                BuyRange:{Min:0.5,Max:1.15},
+                SellRange:{Min:0.05,Max:0.1}
+            },
+            CottonCloth:{
+                Sources:["Agricultural","Minor Industry"],
+                Availability:{Source:0.6,Hub:0.5,ElseWhere:0.05},
+                Amount:{Roll:"1d3"},
+                BasePrice:200000,
+                BuyRange:{Min:0.5,Max:1.50},
+                SellRange:{Min:0.05,Max:0.1}
+            },
+            Ginger:{
+                Sources:["Agricultural"],
+                Availability:{Source:0.3,Hub:0.5,ElseWhere:0.1},
+                Amount:{Roll:"1d2"},
+                BasePrice:400000,
+                BuyRange:{Min:0.5,Max:1.50},
+                SellRange:{Min:0.05,Max:0.25}
+            },
+            Goats:{
+                Sources:["Agricultural"],
+                Availability:{Source:0.3,Hub:0.5,ElseWhere:0.05},
+                Amount:{Roll:"1d2"},
+                BasePrice:400000,
+                BuyRange:{Min:0.5,Max:1.55},
+                SellRange:{Min:0.05,Max:0.25}
+            },
+            Cinnamon:{
+                Sources:["Agricultural"],
+                Availability:{Source:0.30,Hub:0.5,ElseWhere:0.05},
+                Amount:{Roll:"1d2"},
+                BasePrice:600000,
+                BuyRange:{Min:0.5,Max:1.50},
+                SellRange:{Min:0.05,Max:0.25}
+            },
+            Pepper:{
+                Sources:["Agricultural"],
+                Availability:{Source:0.3,Hub:0.5,ElseWhere:0.05},
+                Amount:{Roll:"1d2"},
+                BasePrice:600000,
+                BuyRange:{Min:0.5,Max:1.55},
+                SellRange:{Min:0.05,Max:0.25}
+            },
+            Sheeps:{
+                Sources:["Agricultural"],
+                Availability:{Source:0.3,Hub:0.5,ElseWhere:0.05},
+                Amount:{Roll:"1d2"},
+                BasePrice:600000,
+                BuyRange:{Min:0.5,Max:1.55},
+                SellRange:{Min:0.05,Max:0.25}
+            },
+            Cloves:{
+                Sources:["Agricultural"],
+                Availability:{Source:0.3,Hub:0.5,ElseWhere:0.05},
+                Amount:{Roll:"1d2"},
+                BasePrice:600000,
+                BuyRange:{Min:0.5,Max:1.50},
+                SellRange:{Min:0.05,Max:0.25}
+            },
+            Pigs:{
+                Sources:["Agricultural"],
+                Availability:{Source:0.30,Hub:0.5,ElseWhere:0.05},
+                Amount:{Roll:"1d2",Percentage:0.5},
+                BasePrice:800000,
+                BuyRange:{Min:0.5,Max:1.55},
+                SellRange:{Min:0.05,Max:0.25}
+            },
+            Planks:{
+                Sources:["Forest","Minor Industry"],
+                Availability:{Source:0.6,Hub:0.75,ElseWhere:0.01},
+                Amount:{Roll:"1d2",Percentage:0.5},
+                BasePrice:800000,
+                BuyRange:{Min:0.5,Max:1.25},
+                SellRange:{Min:0.05,Max:0.1}
+            },
+            Medicine:{
+                Sources:["Trade Hub"],
+                Availability:{Source:0.5,Hub:0.5,ElseWhere:0.01},
+                Amount:{Roll:"1d2",Percentage:0.25},
+                BasePrice:1000000,
+                BuyRange:{Min:0.5,Max:2.00},
+                SellRange:{Min:0.05,Max:0.5}
+            },
+            LuxuryGoods:{
+                Sources:["Trade Hub"],
+                Availability:{Source:0.5,Hub:0.5,ElseWhere:0.01},
+                Amount:{Roll:"1d2",Percentage:0.25},
+                BasePrice:1000000,
+                BuyRange:{Min:0.5,Max:2.00},
+                SellRange:{Min:0.05,Max:0.5}
+            },
             Silver:{
                 Sources:["Mining","Minor Industry","Mountain","RainForest","Desert"],
                 Availability:{Source:0.6,Hub:0.8,ElseWhere:0.05},
                 Amount:{Roll:"1d2",Percentage:0.25},
-                BasePrice:100000,
+                BasePrice:1000000,
                 BuyRange:{Min:0.5,Max:1.75},
                 SellRange:{Min:0.1,Max:0.5}
+            },
+            Linen:{
+                Sources:["Agricultural"],
+                Availability:{Source:0.50,Hub:0.5,ElseWhere:0.05},
+                Amount:{Roll:"1d2",Percentage:0.25},
+                BasePrice:1000000,
+                BuyRange:{Min:0.5,Max:1.25},
+                SellRange:{Min:0.05,Max:0.25}
+            },
+            Silk:{
+                Sources:["Agricultural"],
+                Availability:{Source:0.25,Hub:0.6,ElseWhere:0.01},
+                Amount:{Roll:"1d2",Percentage:0.125},
+                BasePrice:2000000,
+                BuyRange:{Min:0.5,Max:2.00},
+                SellRange:{Min:0.05,Max:0.5}
+            },
+            Cows:{
+                Sources:["Agricultural"],
+                Availability:{Source:0.75,Hub:0.5,ElseWhere:0.05},
+                Amount:{Roll:"1d2",Percentage:0.125},
+                BasePrice:200000,
+                BuyRange:{Min:0.5,Max:1.75},
+                SellRange:{Min:0.05,Max:0.25}
+            },
+            Saffron:{
+                Sources:["Agricultural"],
+                Availability:{Source:0.25,Hub:0.5,ElseWhere:0.01},
+                Amount:{Roll:"1d2",Percentage:0.08},
+                BasePrice:3000000,
+                BuyRange:{Min:0.5,Max:2.00},
+                SellRange:{Min:0.05,Max:0.5}
+            },
+            Oxs:{
+                Sources:["Agricultural"],
+                Availability:{Source:0.50,Hub:0.25,ElseWhere:0.01},
+                Amount:{Roll:"1d2",Percentage:0.08},
+                BasePrice:3000000,
+                BuyRange:{Min:0.5,Max:1.75},
+                SellRange:{Min:0.05,Max:0.25}
+            },
+            Gold:{
+                Sources:["Mining","Minor Industry","Mountain","RainForest","Desert"],
+                Availability:{Source:0.5,Hub:0.75,ElseWhere:0.01},
+                Amount:{Roll:"1d2",Percentage:0.06},
+                BasePrice:10000000,
+                BuyRange:{Min:0.5,Max:2.25},
+                SellRange:{Min:0.1,Max:0.5}
+            },
+            Platinum:{
+                Sources:["Mining","Minor Industry","Mountain"],
+                Availability:{Source:0.30,Hub:0.5,ElseWhere:0.01},
+                Amount:{Roll:"1d2",Percentage:0.05},
+                BasePrice:100000000,
+                BuyRange:{Min:0.5,Max:3.00},
+                SellRange:{Min:0.05,Max:1.00}
+            },
+            MagicItemsCommon:{
+                Sources:["Trade Hub"],
+                Availability:{Source:0.5,Hub:0.5,ElseWhere:0.01},
+                Amount:{Roll:"1d6"},
+                BasePrice:0,
+                //BasePrice:{Min:50,Max:100},
+                BuyRange:{Min:0.5,Max:1.25},
+                SellRange:{Min:0.05,Max:0.1}
+            },
+            MagicItemsUncommon:{
+                Sources:["Trade Hub"],
+                Availability:{Source:0.5,Hub:0.25,ElseWhere:0.005},
+                Amount:{Roll:"1d4"},
+                BasePrice:0,
+                //BasePrice:{Min:101,Max:500},
+                BuyRange:{Min:0.5,Max:1.50},
+                SellRange:{Min:0.05,Max:0.25}
+            },
+            MagicItemsRare:{
+                Sources:["Trade Hub"],
+                Availability:{Source:0.5,Hub:0.1,ElseWhere:0.05},
+                Amount:{Roll:"1d2"},
+                BasePrice:0,
+                //BasePrice:{Min:501,Max:5000},
+                BuyRange:{Min:0.5,Max:2.00},
+                SellRange:{Min:0.1,Max:0.5}
+            },
+            MagicItemsVeryRare:{
+                Sources:["Trade Hub"],
+                Availability:{Source:0.5,Hub:0.02,ElseWhere:0.0000001},
+                Amount:{Roll:"1d1"},
+                BasePrice:0,
+                //BasePrice:{Min:5001,Max:50000},
+                BuyRange:{Min:0.5,Max:5.00},
+                SellRange:{Min:0.25,Max:1.00}
+            },
+            MagicItemsLegendary:{
+                Sources:["Trade Hub"],
+                Availability:{Source:0.5,Hub:0.0025,ElseWhere:0.0000000714285714},
+                Amount:{Roll:"1d1"},
+                BasePrice:0,
+                //BasePrice:{Min:50,Max:100},
+                BuyRange:{Min:0.75,Max:1000},
+                SellRange:{Min:0.5,Max:1.0}
             }
         }
         // TableConfig
